@@ -1,0 +1,8 @@
+.addTaskField {
+	float: left;
+	width: 232px;
+}
+
+.addTaskField input {
+	width: 100%;
+}

@@ -1,0 +1,8 @@
+.taskText {
+	float: left;
+	width: 190px;
+}
+
+.taskText input {
+	width: 100%;
+}

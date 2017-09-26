@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import './task-text.css';
 
-class App extends React.Component {
+class TaskText extends React.Component {
 	render() {
 	    return (
-	    	<div>
-	        	Hello World!
+	    	<div className="taskText">
+	    		<input type="text" disabled="disabled" />
 	    	</div>
 	    );
 	}
@@ -18,4 +19,4 @@ export default connect(
 	dispatch => ({
 
 	})
-)(App);
+)(TaskText);

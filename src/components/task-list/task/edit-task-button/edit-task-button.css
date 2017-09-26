@@ -1,0 +1,8 @@
+.editButton {
+	float: left;
+	margin: 0 0 0 5px;
+}
+
+.editButton button {
+	cursor: pointer;
+}

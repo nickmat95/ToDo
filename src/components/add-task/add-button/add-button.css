@@ -1,0 +1,7 @@
+.addTaskButton {
+	float: left;
+}
+
+.addTaskButton button {
+	cursor: pointer;
+}
