@@ -23,7 +23,7 @@ class TaskList extends React.Component {
 	constructor(props) {
 	    super(props);
 
-	   	this.moveTask = this.moveTask.bind(this);
+	    this.moveTask = this.moveTask.bind(this);
 	    this.findTask = this.findTask.bind(this);
 
 	    this.state = {
@@ -62,12 +62,12 @@ class TaskList extends React.Component {
 	}
 
 	render() {
-
+		
 		const { connectDropTarget } = this.props;
     	const { tasks } = this.state;
-
-	    return (
-	    	<div>
+    	
+	    return connectDropTarget(
+	    	<div className="taskList">
 	    	{tasks.map(task => (
 	    		<Task
 	    			key={task.id}
@@ -81,6 +81,7 @@ class TaskList extends React.Component {
 	    );
 	}
 }
+
 
 export default connect(
 	state => ({

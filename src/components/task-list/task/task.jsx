@@ -52,10 +52,10 @@ const DTarget = DropTarget(ItemTypes.TASK, taskTarget, connect => ({
 	connectDropTarget: connect.dropTarget(),
 }));
 
-class TaskList extends React.Component {
+class Task extends React.Component {
 	render() {
 		const { isDragging, connectDragSource, connectDropTarget } = this.props;
-		return connectDragSource(connectDropTarget(
+	    return connectDragSource(connectDropTarget(
 	    	<div className="task">
 	    		<TaskText text={this.props.name} />
 	    		<EditTaskButton />
@@ -74,4 +74,4 @@ export default connect(
 	dispatch => ({
 
 	})
-)(DTarget(DSource(TaskList)));
+)(DTarget(DSource(Task)));
