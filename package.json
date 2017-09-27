@@ -1,5 +1,5 @@
 {
-  "name": "dashboard",
+  "name": "ToDo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,25 +8,29 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nickmat95/dashboard.git"
+    "url": "git+https://github.com/nickmat95/ToDo.git"
   },
   "author": "Nikita Matushevskiy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nickmat95/dashboard/issues"
+    "url": "https://github.com/nickmat95/ToDo/issues"
   },
-  "homepage": "https://github.com/nickmat95/dashboard#readme",
+  "homepage": "https://github.com/nickmat95/ToDo#readme",
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "flow-bin": "^0.55.0",
     "html-webpack-plugin": "^2.30.1",
     "webpack": "^3.6.0"
   },
   "dependencies": {
+    "cors": "^2.8.4",
     "css-loader": "^0.28.7",
     "express": "^4.15.5",
     "path": "^0.12.7",
@@ -35,6 +39,7 @@
     "react-dnd-html5-backend": "^2.5.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
+    "react-resource": "^2.0.6",
     "redux": "^3.7.2",
     "sqlite3": "^3.1.12",
     "style-loader": "^0.18.2"

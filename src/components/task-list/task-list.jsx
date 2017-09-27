@@ -4,6 +4,14 @@ import Task from './task/task.jsx';
 import './task-list.css';
 
 class TaskList extends React.Component {
+	constructor(props) {
+	    super(props);
+
+	    this.state = {
+	    	columnsList: this.props.taskList,
+	    };
+	}
+
 	render() {
 	    return (
 	    	<div>
@@ -15,7 +23,7 @@ class TaskList extends React.Component {
 
 export default connect(
 	state => ({
-
+		taskList: state.getTasksList
 	}),
 	dispatch => ({
 
