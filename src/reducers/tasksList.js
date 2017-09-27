@@ -1,5 +1,8 @@
 const initialState = [{
-	
+	id: 0,
+	name: '',
+	status: 0,
+	sortIndex: 0
 }];
 
 export default function getTasksList(state = initialState, action) {

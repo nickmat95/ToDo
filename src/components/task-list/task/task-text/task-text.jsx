@@ -6,7 +6,7 @@ class TaskText extends React.Component {
 	render() {
 	    return (
 	    	<div className="taskText">
-	    		<input type="text" disabled="disabled" />
+	    		<input type="text" value={this.props.text} disabled="disabled" />
 	    	</div>
 	    );
 	}
