@@ -1,0 +1,10 @@
+.addTaskButton {
+	display: block;
+	float: left;
+	cursor: pointer;
+}
+
+.addTaskField {
+	float: left;
+	width: 232px;
+}
