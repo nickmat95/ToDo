@@ -87,7 +87,7 @@ class Task extends React.Component {
 	    			taskId={this.props.id}
 	    			status={this.state.status} 
 	    		/>
-	    		<DeleteTaskButton />
+	    		<DeleteTaskButton taskId={this.props.id} />
 	    		<Status
 	    			taskId={this.props.id}
 	    			status={this.state.status} 

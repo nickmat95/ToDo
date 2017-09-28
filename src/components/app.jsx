@@ -6,8 +6,8 @@ import { baseUrl } from '../../base-url.js';
 import ReactResource from 'react-resource';
 import './app.css';
 
-const Tasks = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
-const tasksList = new Tasks();
+const TaskResource = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
+const tasksList = new TaskResource();
 
 class App extends React.Component {
 

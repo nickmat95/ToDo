@@ -13,6 +13,9 @@ export default function tasksList(state = initialState, action) {
 	  	case 'ADD_TASK':
 	  		state.push(action.task);
 	  		return state.map(task => task);
+	  	case 'DELETE_TASK':
+	  		state = state.filter(task => task.id !== action.id);
+	  		return state.map(task => task);
 	  	default:
 	  		return state
 	}
