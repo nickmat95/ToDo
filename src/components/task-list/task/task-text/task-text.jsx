@@ -3,10 +3,28 @@ import { connect } from 'react-redux';
 import './task-text.css';
 
 class TaskText extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+		   	value: this.props.name,
+		}
+
+		this.changeValue = this.changeValue.bind(this);
+	}
+
+	changeValue(event) {
+		let value = event.target.value;
+
+		this.setState({
+			value: value,
+		});
+	}
+
 	render() {
 	    return (
 	    	<div className="taskText">
-	    		<input type="text" value={this.props.text} disabled="disabled" />
+	    		<input type="text" value={this.state.value} disabled="disabled" onChange={this.changeValue} />
 	    	</div>
 	    );
 	}

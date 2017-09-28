@@ -73,6 +73,7 @@ class TaskList extends React.Component {
 	    			key={task.id}
 		            id={task.id}
 		            name={task.name}
+		            status={task.status}
 		            moveTask={this.moveTask}
 		            findTask={this.findTask}
 	    		/>

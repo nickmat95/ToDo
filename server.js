@@ -23,7 +23,8 @@ app.put('/api/tasks/:id',(req, res) => {
     res.send('PUT');
 });
 
-app.post('/api/tasks/:id',(req, res) => {
+app.post('/api/tasks',(req, res) => {
+	console.log('post:', req);
     res.send('POST');
 });
 

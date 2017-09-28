@@ -4,9 +4,10 @@ import './status.css';
 
 class Status extends React.Component {
 	render() {
+		let text = (this.props.status === 0) ? 'processing' : 'complete';
 	    return (
 	    	<div className="status">
-	    		<span>status: processing</span>
+	    		<span>status: {text}</span>
 	    	</div>
 	    );
 	}

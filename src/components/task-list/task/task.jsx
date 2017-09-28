@@ -53,15 +53,45 @@ const DTarget = DropTarget(ItemTypes.TASK, taskTarget, connect => ({
 }));
 
 class Task extends React.Component {
+
+	constructor(props) {
+	    super(props);
+
+	    this.state = {
+	    	status: this.props.status,
+	    }
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.newStatus.id === this.props.id) {
+			this.setState({
+				status: nextProps.newStatus.status,
+			});
+		}
+	}
+
 	render() {
 		const { isDragging, connectDragSource, connectDropTarget } = this.props;
 	    return connectDragSource(connectDropTarget(
 	    	<div className="task">
-	    		<TaskText text={this.props.name} />
-	    		<EditTaskButton />
-	    		<StatusTaskButton />
+	    		<TaskText
+	    			name={this.props.name}
+	    			taskId={this.props.id}
+	    			status={this.state.status} 
+	    		/>
+	    		<EditTaskButton 
+	    			taskId={this.props.id}
+	    			status={this.state.status} 
+	    		/>
+	    		<StatusTaskButton
+	    			taskId={this.props.id}
+	    			status={this.state.status} 
+	    		/>
 	    		<DeleteTaskButton />
-	    		<Status />
+	    		<Status
+	    			taskId={this.props.id}
+	    			status={this.state.status} 
+	    		/>
 	    	</div>
 	    ));
 	}
@@ -69,7 +99,7 @@ class Task extends React.Component {
 
 export default connect(
 	state => ({
-
+		newStatus: state.getStatus
 	}),
 	dispatch => ({
 
