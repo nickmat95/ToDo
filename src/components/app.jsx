@@ -13,12 +13,8 @@ class App extends React.Component {
 
 	componentDidMount() {
 		tasksList.$get()
-		.then((response) => {
-			this.props.getTasksList(response);
-		})
-		.catch((err) => {  
-		    console.log('error:', err);  
-		});
+		.then((response) => this.props.tasksList(response))
+		.catch((err) => console.log('error:', err));
 	}
 
 	render() {
@@ -36,6 +32,6 @@ export default connect(
 
 	}),
 	dispatch => ({
-		getTasksList: (list) => dispatch({ type: 'GET_TASKS_LIST', list }),
+		tasksList: (list) => dispatch({ type: 'GET_TASKS_LIST', list }),
 	})
 )(App);

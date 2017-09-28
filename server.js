@@ -4,16 +4,21 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(cors());
+app.use(bodyParser.json());
 
 const db = new sqlite3.Database('database.sqlite');
 
 app.get('/api/tasks',(req, res) => {
+
+    let query = 'SELECT * FROM tasks';
+
 	db.serialize(() => {
-    	db.all("SELECT * FROM tasks", (err, arr) => {
+    	db.all(query, (err, arr) => {
     		res.send(arr);
     	});
 	});
@@ -24,8 +29,25 @@ app.put('/api/tasks/:id',(req, res) => {
 });
 
 app.post('/api/tasks',(req, res) => {
-	console.log('post:', req);
-    res.send('POST');
+
+    let query = `INSERT INTO tasks(name, status) VALUES("${req.body.title}", 0)`;
+
+    db.run(query, (err) => {
+        if (err) {
+            return console.log(err.message);
+        }
+
+        let selectQuery = 'SELECT * FROM tasks ORDER BY id DESC';
+
+        db.get(selectQuery, (err, row) => {
+            if (err) {
+                return console.log(err.message);
+            }
+
+            res.send(row);
+        });
+
+    });
 });
 
 app.delete('/api/tasks/:id',(req, res) => {

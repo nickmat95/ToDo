@@ -4,7 +4,7 @@ import './add-button.css';
 import { baseUrl } from '../../../../base-url.js';
 import ReactResource from 'react-resource';
 
-const Tasks = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
+const TaskResource = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
 
 class AddButton extends React.Component {
 
@@ -15,9 +15,16 @@ class AddButton extends React.Component {
 	}
 
 	addTask() {
-		const newTask = new Tasks({first_name: 'Johnny', last_name: 'Bravo'});
+		let taskData = {title: this.props.addingTaskTitle};
+		const newTask = new TaskResource(taskData);
 
-		newTask.$create();
+		newTask.$create()
+			.then((task) => {
+				this.props.tasksList(task);
+			})
+			.catch((err) => {  
+			    console.log('error:', err);  
+			});
 	}
 
 	render() {
@@ -34,6 +41,6 @@ export default connect(
 		addingTaskTitle: state.getAddingTaskTitle
 	}),
 	dispatch => ({
-
+		tasksList: (task) => dispatch({ type: 'ADD_TASK', task }),
 	})
 )(AddButton);

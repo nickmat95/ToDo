@@ -62,7 +62,7 @@ class TaskList extends React.Component {
 	}
 
 	render() {
-		
+
 		const { connectDropTarget } = this.props;
     	const { tasks } = this.state;
     	
@@ -86,7 +86,7 @@ class TaskList extends React.Component {
 
 export default connect(
 	state => ({
-		taskList: state.getTasksList
+		taskList: state.tasksList,
 	}),
 	dispatch => ({
 
