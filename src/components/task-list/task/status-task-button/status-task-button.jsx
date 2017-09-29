@@ -30,7 +30,6 @@ class StatusTaskButton extends React.Component {
 		const tasks = new TaskResource(taskData);
 
 		tasks.$update()
-			.then(task => this.props.tasksList(task))
 			.catch(err => console.log('error:', err));
 
 		this.props.getStatus(newStatus, this.props.taskId);
@@ -51,6 +50,5 @@ export default connect(
 	}),
 	dispatch => ({
 		getStatus: (status, id) => dispatch({ type: 'GET_STATUS', status, id }),
-		tasksList: modifiedTask => dispatch({ type: 'UPDATE_TASK', modifiedTask }),
 	})
 )(StatusTaskButton);

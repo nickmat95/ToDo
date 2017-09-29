@@ -4,9 +4,9 @@ export function getAddingTaskTitle(state = initialState, action) {
 	switch(action.type) {
 	  	case 'GET_ADDING_TITLE':
 	  		return action.title;
-	  		break;
+	  	default:
+	  		return state
 	}
-	return state;
 }
 
 export function getStatus(state = initialState, action) {
@@ -16,7 +16,31 @@ export function getStatus(state = initialState, action) {
 	  			id: action.id,
 	  			status: action.status
 	  		};
-	  		break;
+		default:
+	  		return state
 	}
-	return state;
+}
+
+export function getEditButtonStatus(state = 'edit', action) {
+	switch(action.type) {
+	  	case 'EDIT_BUTTON_STATUS':
+	  		return {
+	  			id: action.id,
+	  			status: action.buttonStatus
+	  		};
+	  	default:
+	  		return state
+	}
+}
+
+export function getTaskText(state = initialState, action) {
+	switch(action.type) {
+	  	case 'GET_TASK_TEXT':
+	  		return {
+	  			id: action.id,
+	  			text: action.text
+	  		};
+	  	default:
+	  		return state
+	}
 }

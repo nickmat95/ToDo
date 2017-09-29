@@ -77,7 +77,6 @@ class Task extends React.Component {
 	    		<TaskText
 	    			name={this.props.name}
 	    			taskId={this.props.id}
-	    			status={this.state.status} 
 	    		/>
 	    		<EditTaskButton 
 	    			taskId={this.props.id}

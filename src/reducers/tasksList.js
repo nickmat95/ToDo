@@ -16,9 +16,6 @@ export default function tasksList(state = initialState, action) {
 	  	case 'DELETE_TASK':
 	  		state = state.filter(task => task.id !== action.id);
 	  		return state.map(task => task);
-	  	case 'UPDATE_TASK':
-	  		state = state.map(task => (task.id !== action.modifiedTask.id) ? task : action.modifiedTask);
-	  		return state.map(task => task);
 	  	default:
 	  		return state
 	}
