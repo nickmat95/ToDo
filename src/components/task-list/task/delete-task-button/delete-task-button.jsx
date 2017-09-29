@@ -19,7 +19,7 @@ class DeleteTaskButton extends React.Component {
 		const tasks = new TaskResource(taskData);
 
 		tasks.$delete()
-			.then(response => this.props.tasksList(response.id))
+			.then(taskId => this.props.tasksList(taskId.id))
 			.catch(err => console.log('error:', err));
 	}
 
@@ -37,6 +37,6 @@ export default connect(
 
 	}),
 	dispatch => ({
-		tasksList: (id) => dispatch({ type: 'DELETE_TASK', id }),
+		tasksList: id => dispatch({ type: 'DELETE_TASK', id }),
 	})
 )(DeleteTaskButton);

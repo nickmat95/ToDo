@@ -81,11 +81,15 @@ class Task extends React.Component {
 	    		/>
 	    		<EditTaskButton 
 	    			taskId={this.props.id}
-	    			status={this.state.status} 
+	    			status={this.state.status}
+	    			name={this.props.name}
+	    			sortIndex={this.props.sortIndex}
 	    		/>
 	    		<StatusTaskButton
 	    			taskId={this.props.id}
-	    			status={this.state.status} 
+	    			status={this.state.status}
+	    			name={this.props.name}
+	    			sortIndex={this.props.sortIndex} 
 	    		/>
 	    		<DeleteTaskButton taskId={this.props.id} />
 	    		<Status

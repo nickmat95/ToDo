@@ -22,13 +22,18 @@ app.get('/api/tasks',(req, res) => {
 	});
 });
 
-app.put('/api/tasks/:id',(req, res) => {
-    res.send('PUT');
+app.put('/api/tasks',(req, res) => {
+    
+    let taskData = req.body;
+
+    let query = `UPDATE tasks SET name = "${taskData.name}", status = ${taskData.status}, sort_index = ${taskData.sortIndex} WHERE id = ${taskData.id}`;
+
+    db.run(query, err => (err) ? console.log(err.message) : res.send(taskData));
 });
 
 app.post('/api/tasks',(req, res) => {
 
-    let query = `INSERT INTO tasks(name, status) VALUES("${req.body.title}", 0)`;
+    let query = `INSERT INTO tasks(name, status, sort_index) VALUES("${req.body.title}", 0, 0)`;
 
     db.run(query, err => {
         if (err) {

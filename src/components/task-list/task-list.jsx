@@ -65,15 +65,18 @@ class TaskList extends React.Component {
 
 		const { connectDropTarget } = this.props;
     	const { tasks } = this.state;
+
+    	let tasksClone = Object.assign([], tasks);
     	
 	    return connectDropTarget(
 	    	<div className="taskList">
-	    	{tasks.map(task => (
+	    	{tasksClone.reverse().map(task => (
 	    		<Task
 	    			key={task.id}
 		            id={task.id}
 		            name={task.name}
 		            status={task.status}
+		            sortIndex={task.sort_index}
 		            moveTask={this.moveTask}
 		            findTask={this.findTask}
 	    		/>
