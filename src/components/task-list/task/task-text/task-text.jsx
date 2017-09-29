@@ -21,15 +21,13 @@ class TaskText extends React.Component {
 			value: value,
 		});
 
-		this.props.getTaskText(value, this.props.taskId);
+		this.props.getTaskName(value);
 	}
 
 	render() {
-		let editButtonStatus = (this.props.taskId !== this.props.editButtonStatus.id) ? 'edit' : this.props.editButtonStatus.status;
-
 	    return (
 	    	<div className="taskText">
-	    		<input type="text" value={this.state.value} disabled={editButtonStatus === 'edit'} onChange={this.changeValue} />
+	    		<input type="text" value={this.state.value} disabled={this.props.buttonStatus === 'edit'} onChange={this.changeValue} />
 	    	</div>
 	    );
 	}
@@ -37,9 +35,9 @@ class TaskText extends React.Component {
 
 export default connect(
 	state => ({
-		editButtonStatus: state.getEditButtonStatus
+
 	}),
 	dispatch => ({
-		getTaskText: (text, id) => dispatch({ type: 'GET_TASK_TEXT', text, id })
+
 	})
 )(TaskText);

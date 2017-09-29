@@ -12,7 +12,7 @@ class StatusTaskButton extends React.Component {
 	    super(props);
 
 	    this.state = {
-	    	status: (this.props.status === 0) ? false : true
+	    	status: (this.props.status === 0) ? false : true,
 	    }
 
 	    this.changeStatus = this.changeStatus.bind(this);
@@ -32,7 +32,7 @@ class StatusTaskButton extends React.Component {
 		tasks.$update()
 			.catch(err => console.log('error:', err));
 
-		this.props.getStatus(newStatus, this.props.taskId);
+		this.props.getTaskStatus(newStatus);
 	}
 
 	render() {
@@ -49,6 +49,6 @@ export default connect(
 
 	}),
 	dispatch => ({
-		getStatus: (status, id) => dispatch({ type: 'GET_STATUS', status, id }),
+
 	})
 )(StatusTaskButton);

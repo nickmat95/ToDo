@@ -59,15 +59,31 @@ class Task extends React.Component {
 
 	    this.state = {
 	    	status: this.props.status,
+	    	buttonStatus: 'edit',
+	    	name: this.props.name,
 	    }
+
+	    this.getButtonStatus = this.getButtonStatus.bind(this);
+	    this.getTaskName = this.getTaskName.bind(this);
+	    this.getTaskStatus = this.getTaskStatus.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.newStatus.id === this.props.id) {
-			this.setState({
-				status: nextProps.newStatus.status,
-			});
-		}
+	getButtonStatus(buttonStatus) {
+		this.setState({
+			buttonStatus: buttonStatus,
+		});
+	}
+
+	getTaskName(name) {
+		this.setState({
+			name: name,
+		});
+	}
+
+	getTaskStatus(status) {
+		this.setState({
+			status: status,
+		});
 	}
 
 	render() {
@@ -75,20 +91,24 @@ class Task extends React.Component {
 	    return connectDragSource(connectDropTarget(
 	    	<div className="task">
 	    		<TaskText
-	    			name={this.props.name}
+	    			name={this.state.name}
 	    			taskId={this.props.id}
+	    			buttonStatus={this.state.buttonStatus}
+	    			getTaskName={this.getTaskName}
 	    		/>
 	    		<EditTaskButton 
 	    			taskId={this.props.id}
 	    			status={this.state.status}
-	    			name={this.props.name}
+	    			name={this.state.name}
 	    			sortIndex={this.props.sortIndex}
+	    			getButtonStatus={this.getButtonStatus}
 	    		/>
 	    		<StatusTaskButton
 	    			taskId={this.props.id}
 	    			status={this.state.status}
-	    			name={this.props.name}
+	    			name={this.state.name}
 	    			sortIndex={this.props.sortIndex} 
+	    			getTaskStatus={this.getTaskStatus}
 	    		/>
 	    		<DeleteTaskButton taskId={this.props.id} />
 	    		<Status
@@ -102,7 +122,7 @@ class Task extends React.Component {
 
 export default connect(
 	state => ({
-		newStatus: state.getStatus
+		newStatus: state.getStatus,
 	}),
 	dispatch => ({
 

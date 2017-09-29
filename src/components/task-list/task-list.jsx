@@ -34,7 +34,7 @@ class TaskList extends React.Component {
 	componentWillReceiveProps(nextProps) {
 		if(this.props !== nextProps) {
 			this.setState({
-				tasks: nextProps.taskList
+				tasks: nextProps.taskList,
 			});
 		}
 	}

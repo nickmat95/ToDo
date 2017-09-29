@@ -20,9 +20,8 @@ class EditTaskButton extends React.Component {
 
 	changeTask() {
 		let newButtonStatus = (this.state.buttonStatus === 'edit') ? 'save' : 'edit';
-		let taskName = (this.props.taskText) ? this.props.taskText.text : this.props.name;
 
-		let taskData = {id: this.props.taskId, name: taskName, status: this.props.status, sortIndex: this.props.sortIndex};
+		let taskData = {id: this.props.taskId, name: this.props.name, status: this.props.status, sortIndex: this.props.sortIndex};
 		const tasks = new TaskResource(taskData);
 
 		if (newButtonStatus === 'edit') {
@@ -34,13 +33,13 @@ class EditTaskButton extends React.Component {
 			buttonStatus: newButtonStatus,
 		});
 
-		this.props.getEditButtonStatus(newButtonStatus, this.props.taskId);
+		this.props.getButtonStatus(newButtonStatus);
 	}
 
 	render() {
 	    return (
 	    	<div className="editButton">
-	    		<button type="button" disabled={this.props.status === 1} onClick={this.changeTask}>{this.state.buttonStatus}</button>
+	    		<button type="button" disabled={this.props.status === 1 || !this.props.name} onClick={this.changeTask}>{this.state.buttonStatus}</button>
 	    	</div>
 	    );
 	}
@@ -48,9 +47,9 @@ class EditTaskButton extends React.Component {
 
 export default connect(
 	state => ({
-		taskText: state.getTaskText,
+
 	}),
 	dispatch => ({
-		getEditButtonStatus: (buttonStatus, id) => dispatch({ type: 'EDIT_BUTTON_STATUS', buttonStatus, id }),
+
 	})
 )(EditTaskButton);

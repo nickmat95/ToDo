@@ -2,7 +2,7 @@ const initialState = [{
 	id: 0,
 	name: '',
 	status: 0,
-	sortIndex: 0
+	sortIndex: 0,
 }];
 
 export default function tasksList(state = initialState, action) {
