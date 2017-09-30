@@ -38,7 +38,7 @@ class StatusTaskButton extends React.Component {
 	render() {
 	    return (
 	    	<div className="statusButton">
-	    		<input type="checkbox" onChange={this.changeStatus} checked={this.state.status} />
+	    		<input type="checkbox" disabled={this.props.buttonStatus === 'save'} checked={this.state.status} onChange={this.changeStatus} />
 	    	</div>
 	    );
 	}

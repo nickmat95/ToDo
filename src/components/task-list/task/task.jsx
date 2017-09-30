@@ -109,6 +109,7 @@ class Task extends React.Component {
 	    			name={this.state.name}
 	    			sortIndex={this.props.sortIndex} 
 	    			getTaskStatus={this.getTaskStatus}
+	    			buttonStatus={this.state.buttonStatus}
 	    		/>
 	    		<DeleteTaskButton taskId={this.props.id} />
 	    		<Status
