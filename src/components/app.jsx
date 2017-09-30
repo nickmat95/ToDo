@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddTask from './add-task/add-task.jsx';
 import TaskList from './task-list/task-list.jsx';
@@ -25,6 +26,10 @@ class App extends React.Component {
 	    	</div>
 	    );
 	}
+}
+
+App.propTypes = {
+	tasksList: PropTypes.func.isRequired,
 }
 
 export default connect(

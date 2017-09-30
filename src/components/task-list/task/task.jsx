@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TaskText from './task-text/task-text.jsx';
 import EditTaskButton from './edit-task-button/edit-task-button.jsx';
@@ -121,9 +122,19 @@ class Task extends React.Component {
 	}
 }
 
+Task.propTypes = {
+	findTask: PropTypes.func.isRequired,
+	moveTask: PropTypes.func.isRequired,
+	id: PropTypes.number.isRequired,
+	isDragging: PropTypes.bool.isRequired,
+	name: PropTypes.string.isRequired,
+	sortIndex: PropTypes.number.isRequired,
+	status: PropTypes.number.isRequired,
+}
+
 export default connect(
 	state => ({
-		newStatus: state.getStatus,
+
 	}),
 	dispatch => ({
 

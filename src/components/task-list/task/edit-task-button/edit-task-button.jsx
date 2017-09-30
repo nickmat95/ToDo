@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { baseUrl } from '../../../../../base-url.js';
 import ReactResource from 'react-resource';
@@ -43,6 +44,14 @@ class EditTaskButton extends React.Component {
 	    	</div>
 	    );
 	}
+}
+
+EditTaskButton.propTypes = {
+	taskId: PropTypes.number.isRequired,
+	name: PropTypes.string.isRequired,
+	getButtonStatus: PropTypes.func.isRequired,
+	sortIndex: PropTypes.number.isRequired,
+	status: PropTypes.number.isRequired,
 }
 
 export default connect(

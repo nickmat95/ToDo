@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { baseUrl } from '../../../base-url.js';
 import ReactResource from 'react-resource';
@@ -45,6 +46,10 @@ class AddTask extends React.Component {
 	    	</div>
 	    );
 	}
+}
+
+AddTask.propTypes = {
+	tasksList: PropTypes.func.isRequired,
 }
 
 export default connect(

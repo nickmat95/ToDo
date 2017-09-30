@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './status.css';
 
@@ -11,6 +12,11 @@ class Status extends React.Component {
 	    	</div>
 	    );
 	}
+}
+
+Status.propTypes = {
+	taskId: PropTypes.number.isRequired,
+	status: PropTypes.number.isRequired,
 }
 
 export default connect(

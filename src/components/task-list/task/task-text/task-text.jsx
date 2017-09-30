@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './task-text.css';
 
@@ -31,6 +32,13 @@ class TaskText extends React.Component {
 	    	</div>
 	    );
 	}
+}
+
+TaskText.propTypes = {
+	taskId: PropTypes.number.isRequired,
+	buttonStatus: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	getTaskName: PropTypes.func.isRequired,
 }
 
 export default connect(

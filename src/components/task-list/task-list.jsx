@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Task from './task/task.jsx';
 import update from 'react/lib/update';
@@ -86,6 +87,16 @@ class TaskList extends React.Component {
 	}
 }
 
+TaskList.propTypes = {
+	taskList: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number.isRequired,
+			name: PropTypes.string.isRequired,
+			status: PropTypes.number.isRequired,
+			sort_index: PropTypes.number.isRequired,
+		}),
+	),
+}
 
 export default connect(
 	state => ({

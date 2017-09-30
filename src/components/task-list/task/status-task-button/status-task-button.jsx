@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { baseUrl } from '../../../../../base-url.js';
 import ReactResource from 'react-resource';
@@ -42,6 +43,15 @@ class StatusTaskButton extends React.Component {
 	    	</div>
 	    );
 	}
+}
+
+StatusTaskButton.propTypes = {
+	taskId: PropTypes.number.isRequired,
+	buttonStatus: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	getTaskStatus: PropTypes.func.isRequired,
+	sortIndex: PropTypes.number.isRequired,
+	status: PropTypes.number.isRequired,
 }
 
 export default connect(

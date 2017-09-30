@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { baseUrl } from '../../../../../base-url.js';
 import ReactResource from 'react-resource';
@@ -30,6 +31,11 @@ class DeleteTaskButton extends React.Component {
 	    	</div>
 	    );
 	}
+}
+
+DeleteTaskButton.propTypes = {
+	taskId: PropTypes.number.isRequired,
+	tasksList: PropTypes.func.isRequired,
 }
 
 export default connect(
