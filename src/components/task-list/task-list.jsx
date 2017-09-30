@@ -6,7 +6,11 @@ import update from 'react/lib/update';
 import { DropTarget, DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import ItemTypes from '../../item-types.js';
+import { baseUrl } from '../../../base-url.js';
+import ReactResource from 'react-resource';
 import './task-list.css';
+
+const TaskResource = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
 
 const taskTarget = {
 	drop() {
@@ -50,6 +54,21 @@ class TaskList extends React.Component {
 		        ],
 	    	},
 		}));
+
+		for(let i=0; i<this.state.tasks.length; i++) {
+			if(i !== this.state.tasks[i].sort_index) {
+				let sortIndex = i;
+				let task = this.state.tasks[i];
+				let taskData = {id: task.id, name: task.name, status: task.status, sortIndex: sortIndex};
+
+				const tasks = new TaskResource(taskData);
+
+				tasks.$update()
+					.catch(err => console.log('error:', err));
+
+			}
+		}
+
 	}
 
 	findTask(id) {
@@ -100,7 +119,7 @@ TaskList.propTypes = {
 
 export default connect(
 	state => ({
-		taskList: state.tasksList,
+		taskList: state.getTasksList,
 	}),
 	dispatch => ({
 

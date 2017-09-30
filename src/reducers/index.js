@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import tasksList from './tasksList.js';
+import getTasksList from './tasksList.js';
 
 export default combineReducers({
-	tasksList,
+	getTasksList,
 });

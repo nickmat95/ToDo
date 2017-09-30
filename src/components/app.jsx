@@ -14,7 +14,7 @@ class App extends React.Component {
 
 	componentDidMount() {
 		tasksList.$get()
-		.then(taskList => this.props.tasksList(taskList))
+		.then(taskList => this.props.getTasksList(taskList.sort((a, b) => a.sort_index - b.sort_index)))
 		.catch(err => console.log('error:', err));
 	}
 
@@ -29,7 +29,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-	tasksList: PropTypes.func.isRequired,
+	getTasksList: PropTypes.func.isRequired,
 }
 
 export default connect(
@@ -37,6 +37,6 @@ export default connect(
 
 	}),
 	dispatch => ({
-		tasksList: list => dispatch({ type: 'GET_TASKS_LIST', list }),
+		getTasksList: list => dispatch({ type: 'GET_TASKS_LIST', list }),
 	})
 )(App);

@@ -5,7 +5,7 @@ const initialState = [{
 	sort_index: 0,
 }];
 
-export default function tasksList(state = initialState, action) {
+export default function getTasksList(state = initialState, action) {
 	switch(action.type) {
 	  	case 'GET_TASKS_LIST':
 	  		state = action.list;

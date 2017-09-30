@@ -13,18 +13,36 @@ class AddTask extends React.Component {
 
 	    this.addTask = this.addTask.bind(this);
 	    this.changeValue = this.changeValue.bind(this);
+	    this.getNewSortIndex = this.getNewSortIndex.bind(this);
 
 	    this.state = {
 	    	taskName: '',
 	    };
 	}
 
+	getNewSortIndex() {
+		if (this.props.tasksList[0]) {
+			let sortedTasksList = Object.assign([], this.props.tasksList);
+
+			let compare = (a, b) => b.sort_index - a.sort_index;
+
+			sortedTasksList.sort(compare);
+
+			return sortedTasksList[0].sort_index + 1;
+		}
+
+		return 0;
+	}
+
 	addTask() {
-		let taskData = {title: this.state.taskName};
+
+		let sortIndex = this.getNewSortIndex();
+
+		let taskData = {title: this.state.taskName, sortIndex: sortIndex};
 		const tasks = new TaskResource(taskData);
 
 		tasks.$create()
-			.then(task => this.props.tasksList(task))
+			.then(task => this.props.getTasksList(task))
 			.catch(err => console.log('error:', err));
 
 		this.setState({
@@ -49,14 +67,22 @@ class AddTask extends React.Component {
 }
 
 AddTask.propTypes = {
-	tasksList: PropTypes.func.isRequired,
+	getTasksList: PropTypes.func.isRequired,
+	taskList: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number.isRequired,
+			name: PropTypes.string.isRequired,
+			status: PropTypes.number.isRequired,
+			sort_index: PropTypes.number.isRequired,
+		}),
+	),
 }
 
 export default connect(
 	state => ({
-
+		tasksList: state.getTasksList,
 	}),
 	dispatch => ({
-		tasksList: task => dispatch({ type: 'ADD_TASK', task }),
+		getTasksList: task => dispatch({ type: 'ADD_TASK', task }),
 	})
 )(AddTask);

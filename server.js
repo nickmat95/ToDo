@@ -31,7 +31,7 @@ app.put('/api/tasks',(req, res) => {
 
 app.post('/api/tasks',(req, res) => {
 
-    let query = `INSERT INTO tasks(name, status, sort_index) VALUES("${req.body.title}", 0, 0)`;
+    let query = `INSERT INTO tasks(name, status, sort_index) VALUES("${req.body.title}", 0, ${req.body.sortIndex})`;
 
     db.run(query, err => {
         if (err) {
