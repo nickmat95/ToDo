@@ -6,11 +6,8 @@ import update from 'react/lib/update';
 import { DropTarget, DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import ItemTypes from '../../item-types.js';
-import { baseUrl } from '../../../base-url.js';
-import ReactResource from 'react-resource';
+import { TaskResource } from '../../../constants.js';
 import './task-list.css';
-
-const TaskResource = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
 
 const taskTarget = {
 	drop() {

@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { baseUrl } from '../../../base-url.js';
-import ReactResource from 'react-resource';
+import { TaskResource } from '../../../constants.js';
 import './add-task.css';
-
-const TaskResource = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
 
 class AddTask extends React.Component {
 	constructor(props) {

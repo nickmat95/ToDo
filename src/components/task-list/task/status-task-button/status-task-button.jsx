@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { baseUrl } from '../../../../../base-url.js';
-import ReactResource from 'react-resource';
+import { TaskResource } from '../../../../../constants.js';
 import './status-task-button.css';
-
-const TaskResource = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
 
 class StatusTaskButton extends React.Component {
 

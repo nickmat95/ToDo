@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddTask from './add-task/add-task.jsx';
 import TaskList from './task-list/task-list.jsx';
-import { baseUrl } from '../../base-url.js';
-import ReactResource from 'react-resource';
+import { TaskResource } from '../../constants.js';
 import './app.css';
 
-const TaskResource = new ReactResource(`${baseUrl}/api/tasks/{:task}`, {task: ':task'});
 const tasksList = new TaskResource();
 
 class App extends React.Component {
