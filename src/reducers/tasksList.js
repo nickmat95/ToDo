@@ -6,16 +6,16 @@ const initialState = [{
 }];
 
 export default function getTasksList(state = initialState, action) {
+	let result = Object.assign([], state);
 	switch(action.type) {
 	  	case 'GET_TASKS_LIST':
-	  		state = action.list;
 	  		return action.list;
 	  	case 'ADD_TASK':
-	  		state.push(action.task);
-	  		return state.map(task => task);
+	  		result.push(action.task);
+	  		return result.map(task => task);
 	  	case 'DELETE_TASK':
-	  		state = state.filter(task => task.id !== action.id);
-	  		return state.map(task => task);
+			result = result.filter(task => task.id !== action.id);
+	  		return result.map(task => task);
 	  	default:
 	  		return state
 	}
