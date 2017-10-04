@@ -19,11 +19,4 @@ Status.propTypes = {
 	status: PropTypes.number.isRequired,
 }
 
-export default connect(
-	state => ({
-
-	}),
-	dispatch => ({
-
-	})
-)(Status);
+export default Status;
