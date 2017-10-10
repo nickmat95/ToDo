@@ -6,6 +6,7 @@ You can add, change, delete task, change task status and change task places.
 * react
 * redux
 * react-dnd
+* jest
 * express
 * webpack
 
